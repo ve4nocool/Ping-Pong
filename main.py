@@ -37,6 +37,7 @@ window = display.set_mode((win_width, win_height))
 display.set_caption('Пинг-Понг')
 bg = transform.scale(image.load('tennisCourt.png'),(win_width, win_height))
 clock = time.Clock()
+ball = GameSprite('tenis_ball.png', 225, 325, 50, 50, 4)
 score = 0
 finish = False
 run = True
@@ -48,8 +49,8 @@ while run:
             run = False
     
     if not finish:
-        pass
         window.blit(bg,(0,0))
+        ball.draw()
         # text_score = font.SysFont(None, 33).render('Счет: '+str(score), 1, WHITE)
         
     display.update()
