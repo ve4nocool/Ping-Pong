@@ -7,7 +7,7 @@ TURQUOISE = (172, 230, 224)
 font.init()
 mixer.init()
 
-mixer.music.load('Transcendence-chosic.com_.mp3_')
+mixer.music.load('Transcendence-chosic.com_.mp3')
 mixer.music.play()
 # hit_sound = mixer.Sound('')
 
@@ -35,7 +35,7 @@ win_width = 700
 win_height = 500
 window = display.set_mode((win_width, win_height))
 display.set_caption('Пинг-Понг')
-# bg = transform.scale(image.load(''),(win_width, win_height))
+bg = transform.scale(image.load('tennisCourt.png'),(win_width, win_height))
 clock = time.Clock()
 score = 0
 finish = False
@@ -49,7 +49,7 @@ while run:
     
     if not finish:
         pass
-        # window.blit(bg,(0,0))
+        window.blit(bg,(0,0))
         # text_score = font.SysFont(None, 33).render('Счет: '+str(score), 1, WHITE)
         
     display.update()
