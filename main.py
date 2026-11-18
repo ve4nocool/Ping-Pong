@@ -47,6 +47,8 @@ clock = time.Clock()
 ball = GameSprite('tenis_ball.png', 225, 325, 50, 50, 4)
 padel_left = Player('racket.webp', 40, 190, 37, 136, 3)
 padel_right = Player('racket.webp', 620, 190, 37, 136, 3)
+d_y = 3
+d_x = 3
 score = 0
 finish = False
 run = True
@@ -64,6 +66,8 @@ while run:
         padel_right.draw()
         padel_left.update_l()
         padel_right.update_r()
+        ball.rect.x += d_x
+        ball.rect.y += d_y
         # text_score = font.SysFont(None, 33).render('Счет: '+str(score), 1, WHITE)
         
     display.update()
