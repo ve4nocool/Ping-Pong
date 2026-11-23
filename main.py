@@ -9,7 +9,7 @@ mixer.init()
 
 mixer.music.load('Transcendence-chosic.com_.mp3')
 mixer.music.play()
-# hit_sound = mixer.Sound('')
+hit_sound = mixer.Sound('the-sound-of-hitting-the-ball.mp3')
 
 class GameSprite(sprite.Sprite):
     def __init__(self, player_image, player_x, player_y, size_x, size_y, player_speed):
@@ -68,13 +68,26 @@ while run:
         padel_right.update_r()
         ball.rect.x += d_x
         ball.rect.y += d_y
+        
         if ball.rect.y > 450:
             d_y *= -1
+        
         if ball.rect.y < 0:
             d_y *= -1
+        
         if sprite.collide_rect(ball, padel_left) or sprite.collide_rect(ball, padel_right):
+            hit_sound.play()
             d_x *= -1
-        # text_score = font.SysFont(None, 33).render('Счет: '+str(score), 1, WHITE)
+        
+        if ball.rect.x < padel_left.rect.x:
+            text_win1 = font.SysFont('Arial Rounded MT', 67).render('RIGHT WINS!', 1, (0, 18, 184))
+            finish = True
+            window.blit(text_win1, (18,184))
+
+        if ball.rect.x > padel_right.rect.x:
+            text_win = font.SysFont('Arial Rounded MT', 67).render('LEFT WINS!', 1, (0, 18, 184))
+            finish = True
+            window.blit(text_win, (400,184))
         
     display.update()
     clock.tick(fps)
